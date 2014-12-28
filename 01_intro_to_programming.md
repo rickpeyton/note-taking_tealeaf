@@ -3,6 +3,13 @@
 
 ***
 
+## Included Modules
+
+Included modules provide additional functionality to the class. In the example
+String includes the module Comparable which gives access to its methods.
+
+    "cat".between?('ant', 'zebra')
+
 ## Use pry for debugging
 
     gem install pry
@@ -16,5 +23,16 @@ binding.pry into your file.
     binding.pry
     puts a
 
-When you program gets to binding.pry it will open a new pry session (like irb)
+When your program gets to binding.pry it will open a new pry session (like irb)
 with all of your variables and objects loaded.
+
+## Symbols
+
+Ruby **symbols** are created by placing a colon (:) before a word
+
+  :name
+  :a_symbol
+  :"this is also a symbol"
+
+A symbol is used to reference something like a string when you don't intend to
+print it to the screen or change it. This is often referred to as an immutable.
