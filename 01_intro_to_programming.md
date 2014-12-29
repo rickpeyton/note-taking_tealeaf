@@ -51,10 +51,15 @@ do/end we do **not** create a new inner scope.
 1. Constants
   * Declared by capitalizing every letter in the variable's name. They are used
     for storing data that never needs to change.
-
-    MY_CONSTANT = 'I am available throughout your app.'
-
 2. Global Variables
+  * Declared by starting with a $. These are available throughout your entire
+    app and override all scope boundaries. Typically avoided in Ruby.
 3. Class Variables
+   Declared by starting with two @@. Used when you need to declare a variable
+   related to a class, but each instance of that class does not need its own
+   value.
 4. Instance Variables
 5. Local Variables
+
+    MY_CONSTANT = 'I am available throughout your app.'
+    $var = 'I am a Global and am available throughout your app.'
