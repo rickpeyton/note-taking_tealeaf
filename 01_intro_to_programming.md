@@ -36,3 +36,25 @@ Ruby **symbols** are created by placing a colon (:) before a word
 
 A symbol is used to reference something like a string when you don't intend to
 print it to the screen or change it. This is often referred to as an immutable.
+
+## Variable Scope
+
+A variabled assigned outside of a do...end block can be reassigned within the
+do...end block. A variable assigned outside of a method can not be reassigned
+within a method.
+
+When we use for, each, times and other methods that are followed with {} or
+do/end we do **not** create a new inner scope.
+
+## 5 Types of Variables
+
+1. Constants
+  * Declared by capitalizing every letter in the variable's name. They are used
+    for storing data that never needs to change.
+
+    MY_CONSTANT = 'I am available throughout your app.'
+
+2. Global Variables
+3. Class Variables
+4. Instance Variables
+5. Local Variables
