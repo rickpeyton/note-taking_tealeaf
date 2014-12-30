@@ -211,3 +211,109 @@ The _shovel operator_ **<<** accomplishes the same thing.
 
 Map does not mutate the array so you would have to save the result into a new
 array if you wanted to preserve the results.
+
+### Each versus Map
+
+Use **each** for iteration and use **map** for transformation.
+
+Another way of saying it...
+
+Each allows you to do something with each element of an array. Map allows you to
+do something to each element of an array and then return the result as a new
+array.
+
+## Hashes
+
+Old Hash Syntax
+
+    { :name => 'Bob' }
+
+New Hash Syntax
+
+    { name: 'Bob' }
+
+You must use the old syntax when you use something other than a symbol as the
+key.
+
+    { "some string" => "Some Other String" }
+
+### Hashes versus Arrays
+
+1. Does this data need to be associated with a specific label? If yes, use a
+hash. If the data doesn't have a natural label, then typically an array will
+work fine.
+2. Does order matter? If yes, then use an array. As of Ruby 1.9, hashes also
+maintain order, but usually ordered items are stored in an array.
+3. Do I need a "stack" or a "queue" structure? Arrays are good at mimicking
+simple "first-in-first-out" queues, or "last-in-first-out" stacks.
+
+### Handy Hash Methods
+
+**has_key?**
+
+    some_hash = { bob: 42, steve: 31 }
+    some_hash.has_key?(:bob)
+
+**select**
+
+    some_hash.select { |key,value| value == 42 }
+    => { :bob => 42 }
+
+**fetch**
+
+    some_hash.fetch(:bob)
+    => 42
+    some_hash.fetch(:rick)
+    => error
+    some_hash.fetch(:rick, "Rick isn't in the hash")
+    => "Rick isn't in the hash"
+
+**keys and values**
+
+    some_hash.keys
+    => [:bob, :steve]
+    some_hash.values
+    => [42, 31]
+
+## Files
+
+### Creating a file
+
+    some_file = File.new('filename.txt', w+)
+    some_file.close
+
+File.open arguments
+
+* _r_: read-only
+* _w_: write only (if exists, overwrites all)
+* _w+_: read and write (if exists overwrites all)
+* _a+_: read-write (suitable for updating files)
+
+File.read('file_name') loads entire contents of file.
+File.readlines('file_name') returns an array of lines.
+
+### Difference between write and puts when writing to files
+
+**puts** adds a line break to the end of strings while **write** does not.
+
+### Pathname class
+
+Includes all of the functionality of File and Dir and can be applied to an
+object.
+
+**Examples**
+
+    require 'pathname'
+    pn = Pathname.new("/usr/bin/ruby")
+    size = pn.size              # 27662
+    isdir = pn.directory?       # false
+    dir  = pn.dirname           # Pathname:/usr/bin
+    base = pn.basename          # Pathname:ruby
+    dir, base = pn.split        # [Pathname:/usr/bin, Pathname:ruby]
+    data = pn.read
+    pn.open { |f| _ }
+    pn.each_line { |line| _ }
+
+### Fantastic Example of JSON and XML parsing with Nokogiri
+
+[Tealeaf Example](http://www.gotealeaf.com/books/ruby/read/files)
