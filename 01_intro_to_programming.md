@@ -317,3 +317,119 @@ object.
 ### Fantastic Example of JSON and XML parsing with Nokogiri
 
 [Tealeaf Example](http://www.gotealeaf.com/books/ruby/read/files)
+
+## Regular Expressions
+
+Creating regular expressions starts with the forward slash character (/). Inside
+two forward slashes you can place any characters you would like to match with
+the string.
+
+We can use the =~ operator to see if we have a match in our regular expression.
+Let's say we are looking for the letter "b" in a string "powerball". Here's how
+we'd implement this using the =~ operator
+
+    # boolean_regex.rb
+
+    def has_a_b?(string)
+      if string =~ /b/
+        puts "We have a match!"
+      else
+        puts "No match here."
+      end
+    end
+
+    has_a_b?("basketball")
+    has_a_b?("football")
+    has_a_b?("hockey")
+    has_a_b?("golf")
+
+## Blocks and Procs
+
+    # passing_block.rb
+
+    def take_block(number, &block)
+      block.call
+    end
+
+    [1, 2, 3, 4, 5].each do |number|
+      take_block number do
+        puts "Block being called in the method! #{number}"
+      end
+    end
+
+The ampersand in the method definition tells us that the argument is a block.
+
+A block must always be the last parameter in the method definition and it is
+called like any other method.
+
+### A Proc Example
+
+    #passing_proc.rb
+
+    def take_proc(proc)
+      [1, 2, 3, 4, 5].each do |number|
+        proc.call number
+      end
+    end
+
+    proc = Proc.new do |number|
+      puts "#{number}. Proc being called in the method!"
+    end
+
+    take_proc(proc)
+
+## Exception Handling
+
+Ruby has an Exception class that makes handling these errors much easier. It
+also has a syntactic structure using the reserved words begin, rescue, and end
+to signify exception handling. The basic structure looks like this.
+
+    # exception_example.rb
+
+    begin
+      # perform some dangerous operation
+    rescue
+      # do this if operation fails
+      # log the error
+    end
+
+Another example
+
+    names = ['bob', 'joe', 'steve', nil, 'frank']
+
+    names.each do |name|
+      begin
+        puts "#{name}'s name has #{name.length} letters in it."
+      rescue
+        puts "Something went wrong!"
+      end
+    end
+
+## Handling Errors
+
+    def greet(person)
+      puts "Hello, " + person
+    end
+
+    greet("John")
+    greet(1)
+
+greet(1) will throw a **TypeError**
+
+    $ ruby greeting.rb
+    Hello, John
+    greeting.rb:2:in +': no implicit conversion of Fixnum into String
+    (TypeError) from greeting.rb:2:ingreet'
+    from greeting.rb:6:in `<main>'
+
+When ruby calls a function, the function is added to Ruby's 'stack'. In the
+simple example above when we called greet("John"), program execution would look
+like this:
+
+    main -> greet -> puts -> exit and return to main
+
+Now we can make a little more sense of the output from the error, as it provides
+a detailed trace (known as a **stack trace**) that shows the flow of execution
+and where the error occurred.
+
+
