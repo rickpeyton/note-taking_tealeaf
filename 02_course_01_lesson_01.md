@@ -117,4 +117,4 @@ The steps you will take to write a program.
 ## Lesson 1 is local variables only
 
 No instance or global variables! This is not an object oriented programming
-challenge so no OO here.
+challenge so no OO here
