@@ -118,3 +118,10 @@ The steps you will take to write a program.
 
 No instance or global variables! This is not an object oriented programming
 challenge so no OO here
+
+## Steps for Success in Writing a Program from Scratch
+
+1. Come up with the requirements / specifications, which will determine scope.
+2. Application logic; sequence of steps
+3. Translation of those steps into code
+4. Run code to verify logic
