@@ -59,11 +59,13 @@
 
 ### Pass by Value
 
-    def some_method(obj)
-      obj.uniq
-    end
-    outer_obj = [1, 2, 2, 3, 3, 4]
-    outer_obj = some_method(outer_obj)
+```ruby
+def some_method(obj)
+  obj.uniq
+end
+outer_obj = [1, 2, 2, 3, 3, 4]
+outer_obj = some_method(outer_obj)
+```
 
 This is an example of *pass by value* because the method does not mutate the
 object and so we need to set outer_obj equal to the output of the method call in
@@ -71,11 +73,13 @@ order to retain the return value.
 
 ### Pass by Reference
 
-    def some_method(obj)
-      obj.uniq!
-    end
-    outer_obj = [1, 2, 2, 3, 3, 4]
-    some_method(outer_obj)
+```ruby
+def some_method(obj)
+  obj.uniq!
+end
+outer_obj = [1, 2, 2, 3, 3, 4]
+some_method(outer_obj)
+```
 
 In this example we can pass by reference because the method (uniq with a bang)
 does mutate the object.
