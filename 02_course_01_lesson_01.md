@@ -125,3 +125,19 @@ challenge so no OO here
 2. Application logic; sequence of steps
 3. Translation of those steps into code
 4. Run code to verify logic
+
+## Cool Use of Ruby to Initialize Tic Tac Toe Board
+
+```ruby
+def initialize_board
+  b = {}
+  (1..9).each { |position| b[position] = ' ' }
+  b
+end
+```
+
+Nice and quick compared to how I did it.
+
+```ruby
+game_board = { '1' => ' ', '2' => ' ', '3' => ' '... etc
+```
